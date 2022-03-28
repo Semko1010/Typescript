@@ -1,5 +1,5 @@
 import { useContext, FunctionComponent, ReactElement, useState } from "react";
-import {ArticleContext} from "./App";
+import {ArticleContext} from "./Context";
 
 const Fetch:FunctionComponent = ():ReactElement => {
 	 const {articles, setArticles} = useContext(ArticleContext)
