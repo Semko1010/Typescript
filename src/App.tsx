@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import {createContext,useState,FunctionComponent, ReactElement} from 'react';
+import FetchMovies from "./FetchMovies"
 import './App.css';
 
-function App() {
+type IArticle = {
+  articles: string;
+  setArticles:React.Dispatch<React.SetStateAction<string>>
+  
+}
+const ArticleContext = createContext<IArticle>({} as IArticle);
+
+ const App:FunctionComponent=()=>{
+  const [ articles, setArticles ] = useState("");
+
+  console.log();
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ArticleContext.Provider value={{articles,setArticles}}>
+    
+      
+    <FetchMovies/>
+    
+  
+    </ArticleContext.Provider>
+  )
 }
 
+export {ArticleContext}
 export default App;
